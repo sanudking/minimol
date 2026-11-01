@@ -1,0 +1,20 @@
+{
+  "name": "minimol-p2p-mesh",
+  "private": true,
+  "version": "0.5.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build && node scripts/postbuild.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "verify": "node scripts/verify.mjs",
+    "check": "npm run verify && npm run build"
+  },
+  "devDependencies": {
+    "vite": "^6.4.1"
+  },
+  "dependencies": {
+    "jsqr": "^1.4.0",
+    "qrcode": "^1.5.4"
+  }
+}

@@ -1,0 +1,991 @@
+{
+  "format": "little-endian contiguous FP32",
+  "architecture": {
+    "type": "pre-LN vanilla causal decoder Transformer",
+    "vocab_size": 256,
+    "max_seq_len": 512,
+    "n_layers": 6,
+    "d_model": 384,
+    "n_heads": 6,
+    "head_dim": 64,
+    "d_ff": 1536,
+    "parameter_count": 11040768,
+    "seed": 42,
+    "initialization": "PyTorch module defaults; see model.py; module creation order is fixed",
+    "attention": "fused QKV, causal softmax attention",
+    "activation": "exact GELU",
+    "position_embedding": "learned absolute",
+    "output_head": "untied, bias-free"
+  },
+  "files": {
+    "weights.bin": {
+      "nbytes": 44163072,
+      "sha256": "319098f0c0d004c0a8f1ecf3c37ed2d7e3b31d515cc6b0d26f53a345f8a6999c"
+    },
+    "phone1.bin": {
+      "nbytes": 22473216,
+      "sha256": "a1ce49d2960b3c66c715d8f0fa1317dc8275c95add5c44aef5ccf6f75dc730ea"
+    },
+    "phone2.bin": {
+      "nbytes": 21689856,
+      "sha256": "50a4e8ccc29188b78542957d3705669929dc2e4caf2e334a52622f074c2667f2"
+    }
+  },
+  "partition": {
+    "phone1": "token_embedding + position_embedding + blocks.0-2",
+    "phone2": "blocks.3-5 + final_norm + lm_head"
+  },
+  "tensors": [
+    {
+      "name": "token_embedding.weight",
+      "shape": [
+        256,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 0,
+      "partition_offset_bytes": 0,
+      "nbytes": 393216,
+      "numel": 98304
+    },
+    {
+      "name": "position_embedding.weight",
+      "shape": [
+        512,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 393216,
+      "partition_offset_bytes": 393216,
+      "nbytes": 786432,
+      "numel": 196608
+    },
+    {
+      "name": "blocks.0.ln1.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 1179648,
+      "partition_offset_bytes": 1179648,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.0.ln1.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 1181184,
+      "partition_offset_bytes": 1181184,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.0.attn.qkv.weight",
+      "shape": [
+        1152,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 1182720,
+      "partition_offset_bytes": 1182720,
+      "nbytes": 1769472,
+      "numel": 442368
+    },
+    {
+      "name": "blocks.0.attn.qkv.bias",
+      "shape": [
+        1152
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 2952192,
+      "partition_offset_bytes": 2952192,
+      "nbytes": 4608,
+      "numel": 1152
+    },
+    {
+      "name": "blocks.0.attn.proj.weight",
+      "shape": [
+        384,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 2956800,
+      "partition_offset_bytes": 2956800,
+      "nbytes": 589824,
+      "numel": 147456
+    },
+    {
+      "name": "blocks.0.attn.proj.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 3546624,
+      "partition_offset_bytes": 3546624,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.0.ln2.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 3548160,
+      "partition_offset_bytes": 3548160,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.0.ln2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 3549696,
+      "partition_offset_bytes": 3549696,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.0.ffn.fc1.weight",
+      "shape": [
+        1536,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 3551232,
+      "partition_offset_bytes": 3551232,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.0.ffn.fc1.bias",
+      "shape": [
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 5910528,
+      "partition_offset_bytes": 5910528,
+      "nbytes": 6144,
+      "numel": 1536
+    },
+    {
+      "name": "blocks.0.ffn.fc2.weight",
+      "shape": [
+        384,
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 5916672,
+      "partition_offset_bytes": 5916672,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.0.ffn.fc2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 8275968,
+      "partition_offset_bytes": 8275968,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.1.ln1.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 8277504,
+      "partition_offset_bytes": 8277504,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.1.ln1.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 8279040,
+      "partition_offset_bytes": 8279040,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.1.attn.qkv.weight",
+      "shape": [
+        1152,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 8280576,
+      "partition_offset_bytes": 8280576,
+      "nbytes": 1769472,
+      "numel": 442368
+    },
+    {
+      "name": "blocks.1.attn.qkv.bias",
+      "shape": [
+        1152
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 10050048,
+      "partition_offset_bytes": 10050048,
+      "nbytes": 4608,
+      "numel": 1152
+    },
+    {
+      "name": "blocks.1.attn.proj.weight",
+      "shape": [
+        384,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 10054656,
+      "partition_offset_bytes": 10054656,
+      "nbytes": 589824,
+      "numel": 147456
+    },
+    {
+      "name": "blocks.1.attn.proj.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 10644480,
+      "partition_offset_bytes": 10644480,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.1.ln2.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 10646016,
+      "partition_offset_bytes": 10646016,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.1.ln2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 10647552,
+      "partition_offset_bytes": 10647552,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.1.ffn.fc1.weight",
+      "shape": [
+        1536,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 10649088,
+      "partition_offset_bytes": 10649088,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.1.ffn.fc1.bias",
+      "shape": [
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 13008384,
+      "partition_offset_bytes": 13008384,
+      "nbytes": 6144,
+      "numel": 1536
+    },
+    {
+      "name": "blocks.1.ffn.fc2.weight",
+      "shape": [
+        384,
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 13014528,
+      "partition_offset_bytes": 13014528,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.1.ffn.fc2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 15373824,
+      "partition_offset_bytes": 15373824,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.2.ln1.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 15375360,
+      "partition_offset_bytes": 15375360,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.2.ln1.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 15376896,
+      "partition_offset_bytes": 15376896,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.2.attn.qkv.weight",
+      "shape": [
+        1152,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 15378432,
+      "partition_offset_bytes": 15378432,
+      "nbytes": 1769472,
+      "numel": 442368
+    },
+    {
+      "name": "blocks.2.attn.qkv.bias",
+      "shape": [
+        1152
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 17147904,
+      "partition_offset_bytes": 17147904,
+      "nbytes": 4608,
+      "numel": 1152
+    },
+    {
+      "name": "blocks.2.attn.proj.weight",
+      "shape": [
+        384,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 17152512,
+      "partition_offset_bytes": 17152512,
+      "nbytes": 589824,
+      "numel": 147456
+    },
+    {
+      "name": "blocks.2.attn.proj.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 17742336,
+      "partition_offset_bytes": 17742336,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.2.ln2.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 17743872,
+      "partition_offset_bytes": 17743872,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.2.ln2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 17745408,
+      "partition_offset_bytes": 17745408,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.2.ffn.fc1.weight",
+      "shape": [
+        1536,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 17746944,
+      "partition_offset_bytes": 17746944,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.2.ffn.fc1.bias",
+      "shape": [
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 20106240,
+      "partition_offset_bytes": 20106240,
+      "nbytes": 6144,
+      "numel": 1536
+    },
+    {
+      "name": "blocks.2.ffn.fc2.weight",
+      "shape": [
+        384,
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 20112384,
+      "partition_offset_bytes": 20112384,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.2.ffn.fc2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone1",
+      "canonical_offset_bytes": 22471680,
+      "partition_offset_bytes": 22471680,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.3.ln1.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 22473216,
+      "partition_offset_bytes": 0,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.3.ln1.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 22474752,
+      "partition_offset_bytes": 1536,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.3.attn.qkv.weight",
+      "shape": [
+        1152,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 22476288,
+      "partition_offset_bytes": 3072,
+      "nbytes": 1769472,
+      "numel": 442368
+    },
+    {
+      "name": "blocks.3.attn.qkv.bias",
+      "shape": [
+        1152
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 24245760,
+      "partition_offset_bytes": 1772544,
+      "nbytes": 4608,
+      "numel": 1152
+    },
+    {
+      "name": "blocks.3.attn.proj.weight",
+      "shape": [
+        384,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 24250368,
+      "partition_offset_bytes": 1777152,
+      "nbytes": 589824,
+      "numel": 147456
+    },
+    {
+      "name": "blocks.3.attn.proj.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 24840192,
+      "partition_offset_bytes": 2366976,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.3.ln2.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 24841728,
+      "partition_offset_bytes": 2368512,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.3.ln2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 24843264,
+      "partition_offset_bytes": 2370048,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.3.ffn.fc1.weight",
+      "shape": [
+        1536,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 24844800,
+      "partition_offset_bytes": 2371584,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.3.ffn.fc1.bias",
+      "shape": [
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 27204096,
+      "partition_offset_bytes": 4730880,
+      "nbytes": 6144,
+      "numel": 1536
+    },
+    {
+      "name": "blocks.3.ffn.fc2.weight",
+      "shape": [
+        384,
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 27210240,
+      "partition_offset_bytes": 4737024,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.3.ffn.fc2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 29569536,
+      "partition_offset_bytes": 7096320,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.4.ln1.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 29571072,
+      "partition_offset_bytes": 7097856,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.4.ln1.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 29572608,
+      "partition_offset_bytes": 7099392,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.4.attn.qkv.weight",
+      "shape": [
+        1152,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 29574144,
+      "partition_offset_bytes": 7100928,
+      "nbytes": 1769472,
+      "numel": 442368
+    },
+    {
+      "name": "blocks.4.attn.qkv.bias",
+      "shape": [
+        1152
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 31343616,
+      "partition_offset_bytes": 8870400,
+      "nbytes": 4608,
+      "numel": 1152
+    },
+    {
+      "name": "blocks.4.attn.proj.weight",
+      "shape": [
+        384,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 31348224,
+      "partition_offset_bytes": 8875008,
+      "nbytes": 589824,
+      "numel": 147456
+    },
+    {
+      "name": "blocks.4.attn.proj.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 31938048,
+      "partition_offset_bytes": 9464832,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.4.ln2.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 31939584,
+      "partition_offset_bytes": 9466368,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.4.ln2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 31941120,
+      "partition_offset_bytes": 9467904,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.4.ffn.fc1.weight",
+      "shape": [
+        1536,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 31942656,
+      "partition_offset_bytes": 9469440,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.4.ffn.fc1.bias",
+      "shape": [
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 34301952,
+      "partition_offset_bytes": 11828736,
+      "nbytes": 6144,
+      "numel": 1536
+    },
+    {
+      "name": "blocks.4.ffn.fc2.weight",
+      "shape": [
+        384,
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 34308096,
+      "partition_offset_bytes": 11834880,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.4.ffn.fc2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 36667392,
+      "partition_offset_bytes": 14194176,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.5.ln1.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 36668928,
+      "partition_offset_bytes": 14195712,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.5.ln1.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 36670464,
+      "partition_offset_bytes": 14197248,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.5.attn.qkv.weight",
+      "shape": [
+        1152,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 36672000,
+      "partition_offset_bytes": 14198784,
+      "nbytes": 1769472,
+      "numel": 442368
+    },
+    {
+      "name": "blocks.5.attn.qkv.bias",
+      "shape": [
+        1152
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 38441472,
+      "partition_offset_bytes": 15968256,
+      "nbytes": 4608,
+      "numel": 1152
+    },
+    {
+      "name": "blocks.5.attn.proj.weight",
+      "shape": [
+        384,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 38446080,
+      "partition_offset_bytes": 15972864,
+      "nbytes": 589824,
+      "numel": 147456
+    },
+    {
+      "name": "blocks.5.attn.proj.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 39035904,
+      "partition_offset_bytes": 16562688,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.5.ln2.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 39037440,
+      "partition_offset_bytes": 16564224,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.5.ln2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 39038976,
+      "partition_offset_bytes": 16565760,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "blocks.5.ffn.fc1.weight",
+      "shape": [
+        1536,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 39040512,
+      "partition_offset_bytes": 16567296,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.5.ffn.fc1.bias",
+      "shape": [
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 41399808,
+      "partition_offset_bytes": 18926592,
+      "nbytes": 6144,
+      "numel": 1536
+    },
+    {
+      "name": "blocks.5.ffn.fc2.weight",
+      "shape": [
+        384,
+        1536
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 41405952,
+      "partition_offset_bytes": 18932736,
+      "nbytes": 2359296,
+      "numel": 589824
+    },
+    {
+      "name": "blocks.5.ffn.fc2.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 43765248,
+      "partition_offset_bytes": 21292032,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "final_norm.weight",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 43766784,
+      "partition_offset_bytes": 21293568,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "final_norm.bias",
+      "shape": [
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 43768320,
+      "partition_offset_bytes": 21295104,
+      "nbytes": 1536,
+      "numel": 384
+    },
+    {
+      "name": "lm_head.weight",
+      "shape": [
+        256,
+        384
+      ],
+      "dtype": "float32",
+      "owner": "phone2",
+      "canonical_offset_bytes": 43769856,
+      "partition_offset_bytes": 21296640,
+      "nbytes": 393216,
+      "numel": 98304
+    }
+  ]
+}

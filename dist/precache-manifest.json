@@ -1,0 +1,12 @@
+{
+  "files": [
+    "assets/index-BHjHqbdt.css",
+    "assets/index-QYTPfANo.js",
+    "assets/inference-worker-CeFS6zys.js",
+    "index.html",
+    "manifest.webmanifest",
+    "models/manifest.json",
+    "models/reference_outputs.json",
+    "sw.js"
+  ]
+}

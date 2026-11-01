@@ -2,6 +2,9 @@
 
 A browser-only two-phone implementation of the fixed seed-42, 6-layer, 11,040,768-parameter byte-level causal Transformer. Phone 1 owns embeddings + layers 0–2; Phone 2 owns layers 3–5 + final norm + output head.
 
+ [Demo link : ](https://timely-quokka-ddbc6b.netlify.app/) https://timely-quokka-ddbc6b.netlify.app/
+
+
 ## Included
 
 - Full application source, including `src/inference-worker.js` and the CPU inference engine.
